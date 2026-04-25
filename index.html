@@ -56,7 +56,7 @@
   --serif: 'Playfair Display', Georgia, serif;
   --sans: 'DM Sans', system-ui, sans-serif;
 }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 68px; }
 body { font-family: var(--sans); background: var(--bg); color: var(--steel); line-height: 1.6; }
 a { text-decoration: none; }
 
@@ -617,7 +617,7 @@ footer a:hover { color: rgba(255,255,255,0.85); }
   </div>
 </footer>
 
-<button class="back-to-top" id="backToTop" aria-label="Nach oben" onclick="window.scrollTo({top:0,behavior:"smooth"})">↑</button>
+<button class="back-to-top" id="backToTop" aria-label="Nach oben" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <script>
 const hamburger = document.getElementById("hamburger");
@@ -653,6 +653,7 @@ document.addEventListener("click", (e) => {
 
 </body>
 </html>
+
 
 
 
