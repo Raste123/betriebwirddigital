@@ -68,19 +68,6 @@ nav { position: sticky; top: 0; z-index: 100; background: var(--white); border-b
 .nav-cta { background: var(--green); color: #fff; padding: 10px 22px; border-radius: 8px; font-family: var(--sans); font-weight: 600; font-size: 14px; transition: background .2s; display: inline-block; }
 .nav-cta:hover { background: var(--green-light); }
 
-.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; }
-.hamburger span { display: block; width: 24px; height: 2px; background: var(--steel); border-radius: 2px; transition: all 0.3s; }
-.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-.mobile-menu { display: none; position: fixed; top: 68px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 16px 2rem; z-index: 99; flex-direction: column; gap: 4px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
-.mobile-menu.open { display: flex; }
-.mobile-menu a { color: var(--steel); font-size: 16px; font-weight: 500; padding: 12px 0; border-bottom: 1px solid var(--border); display: block; transition: color .2s; }
-.mobile-menu a:hover { color: var(--green); }
-.mobile-menu a:last-child { border-bottom: none; }
-.mobile-menu .mob-cta { background: var(--green); color: #fff !important; text-align: center; padding: 14px !important; border-radius: 8px; margin-top: 8px; border-bottom: none !important; font-weight: 600; }
-
 .hero { background: linear-gradient(135deg, #2c3e50 0%, #1a2c40 60%, #0f1e2d 100%); color: #fff; padding: 88px 2rem 96px; position: relative; overflow: hidden; }
 .hero::before { content: ''; position: absolute; top: -80px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(90,171,63,0.18) 0%, transparent 70%); pointer-events: none; }
 .hero-inner { max-width: 920px; margin: 0 auto; position: relative; z-index: 1; }
@@ -196,7 +183,18 @@ footer a:hover { color: rgba(255,255,255,0.85); }
   .about-stats { grid-template-columns: 1fr; }
   .hero-actions { flex-direction: column; }
 }
-.back-to-top { position: fixed; bottom: 28px; right: 28px; width: 48px; height: 48px; background: var(--green); color: #fff; border: none; border-radius: 50%; cursor: pointer; display: none; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(58,125,44,0.35); z-index: 200; transition: background .2s, transform .2s; font-size: 20px; }
+
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; z-index: 101; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--steel); border-radius: 2px; transition: all 0.3s; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-menu { display: none; position: fixed; top: 68px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 16px 2rem 24px; z-index: 99; flex-direction: column; gap: 0; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { color: var(--steel); font-size: 16px; font-weight: 500; padding: 14px 0; border-bottom: 1px solid var(--border); display: block; transition: color .2s; }
+.mobile-menu a:hover { color: var(--green); }
+.mobile-menu .mob-cta { background: var(--green); color: #fff !important; text-align: center; padding: 14px 0 !important; border-radius: 8px; margin-top: 12px; border: none !important; font-weight: 600; border-bottom: none !important; }
+.back-to-top { position: fixed; bottom: 28px; right: 28px; width: 48px; height: 48px; background: var(--green); color: #fff; border: none; border-radius: 50%; cursor: pointer; display: none; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(58,125,44,0.35); z-index: 200; transition: background .2s, transform .2s; font-size: 22px; line-height: 1; }
 .back-to-top:hover { background: var(--green-light); transform: translateY(-2px); }
 .back-to-top.visible { display: flex; }
 
@@ -216,16 +214,20 @@ footer a:hover { color: rgba(255,255,255,0.85); }
   </ul>
   
 </nav>
-
-<button class="hamburger" id="hamburger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
+<button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+  <span></span><span></span><span></span>
+</button>
 
 <div class="mobile-menu" id="mobileMenu">
   <a href="#problem" onclick="closeMobileMenu()">Ausgangslage</a>
   <a href="#prozess" onclick="closeMobileMenu()">Vorgehen</a>
   <a href="#leistungen" onclick="closeMobileMenu()">Leistungen</a>
   <a href="#ueber-mich" onclick="closeMobileMenu()">Über mich</a>
-  <a href="https://cal.meetergo.com/betriebwirddigital-stefan-koerke/kostenloses-telefonisches-erstgesprach" class="mob-cta" onclick="closeMobileMenu()">Termin buchen</a>
+  <a href="https://my.meetergo.com/betriebwirddigital-stefan-koerke" target="_blank" class="mob-cta" onclick="closeMobileMenu()">Termin buchen</a>
 </div>
+
+<button class="back-to-top" id="backToTop" aria-label="Nach oben">↑</button>
+
 
 <section class="hero" id="hero">
   <div class="hero-inner">
@@ -617,42 +619,45 @@ footer a:hover { color: rgba(255,255,255,0.85); }
   </div>
 </footer>
 
-<button class="back-to-top" id="backToTop" aria-label="Nach oben" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <script>
-const hamburger = document.getElementById("hamburger");
-const mobileMenu = document.getElementById("mobileMenu");
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+const backToTop = document.getElementById('backToTop');
 
-hamburger.addEventListener("click", () => {
-  hamburger.classList.toggle("open");
-  mobileMenu.classList.toggle("open");
+hamburger.addEventListener('click', function() {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
 });
 
 function closeMobileMenu() {
-  hamburger.classList.remove("open");
-  mobileMenu.classList.remove("open");
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
 }
 
-// Zurück nach oben Button
-const backToTop = document.getElementById("backToTop");
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 300) {
-    backToTop.classList.add("visible");
-  } else {
-    backToTop.classList.remove("visible");
+document.addEventListener('click', function(e) {
+  if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
   }
 });
 
-document.addEventListener("click", (e) => {
-  if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
-    hamburger.classList.remove("open");
-    mobileMenu.classList.remove("open");
+window.addEventListener('scroll', function() {
+  if (window.scrollY > 300) {
+    backToTop.classList.add('visible');
+  } else {
+    backToTop.classList.remove('visible');
   }
+});
+
+backToTop.addEventListener('click', function() {
+  window.scrollTo({top: 0, behavior: 'smooth'});
 });
 </script>
 
 </body>
 </html>
+
 
 
 
