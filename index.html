@@ -196,6 +196,10 @@ footer a:hover { color: rgba(255,255,255,0.85); }
   .about-stats { grid-template-columns: 1fr; }
   .hero-actions { flex-direction: column; }
 }
+.back-to-top { position: fixed; bottom: 28px; right: 28px; width: 48px; height: 48px; background: var(--green); color: #fff; border: none; border-radius: 50%; cursor: pointer; display: none; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(58,125,44,0.35); z-index: 200; transition: background .2s, transform .2s; font-size: 20px; }
+.back-to-top:hover { background: var(--green-light); transform: translateY(-2px); }
+.back-to-top.visible { display: flex; }
+
 </style>
 </head>
 <body>
@@ -216,8 +220,8 @@ footer a:hover { color: rgba(255,255,255,0.85); }
 <button class="hamburger" id="hamburger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#ausgangslage" onclick="closeMobileMenu()">Ausgangslage</a>
-  <a href="#vorgehen" onclick="closeMobileMenu()">Vorgehen</a>
+  <a href="#problem" onclick="closeMobileMenu()">Ausgangslage</a>
+  <a href="#prozess" onclick="closeMobileMenu()">Vorgehen</a>
   <a href="#leistungen" onclick="closeMobileMenu()">Leistungen</a>
   <a href="#ueber-mich" onclick="closeMobileMenu()">Über mich</a>
   <a href="https://cal.meetergo.com/betriebwirddigital-stefan-koerke/kostenloses-telefonisches-erstgesprach" class="mob-cta" onclick="closeMobileMenu()">Termin buchen</a>
@@ -613,6 +617,8 @@ footer a:hover { color: rgba(255,255,255,0.85); }
   </div>
 </footer>
 
+<button class="back-to-top" id="backToTop" aria-label="Nach oben" onclick="window.scrollTo({top:0,behavior:"smooth"})">↑</button>
+
 <script>
 const hamburger = document.getElementById("hamburger");
 const mobileMenu = document.getElementById("mobileMenu");
@@ -627,6 +633,16 @@ function closeMobileMenu() {
   mobileMenu.classList.remove("open");
 }
 
+// Zurück nach oben Button
+const backToTop = document.getElementById("backToTop");
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    backToTop.classList.add("visible");
+  } else {
+    backToTop.classList.remove("visible");
+  }
+});
+
 document.addEventListener("click", (e) => {
   if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
     hamburger.classList.remove("open");
@@ -637,6 +653,7 @@ document.addEventListener("click", (e) => {
 
 </body>
 </html>
+
 
 
 
